@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import SequenceList from "./SequenceList.vue";
-import TreeArea from "./TreeArea.vue";
-import FrontierList from "./FrontierList.vue";
+import SequenceList from "@/components/SequenceList.vue";
+import TreeArea from "@/components/TreeArea.vue";
+import FrontierList from "@/components/FrontierList.vue";
+import AlgorithmSelector from "@/components/AlgorithmSelector.vue";
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import FrontierList from "./FrontierList.vue";
     <CardHeader>
       <CardTitle class="flex flex-row justify-between items-center">
         <span class="font-black">Work Area</span>
+        <AlgorithmSelector />
       </CardTitle>
     </CardHeader>
     <CardContent class="grow flex">
