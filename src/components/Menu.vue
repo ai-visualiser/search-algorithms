@@ -1,25 +1,14 @@
 <script setup lang="ts">
-import { Card, CardContent } from '@/components/ui/card';
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from '@/components/ui/navigation-menu';
+import { Menubar, MenubarMenu, MenubarContent, MenubarTrigger } from '@/components/ui/menubar';
 </script>
 
 <template>
-  <Card>
-    <CardContent class="flex flex-row justify-between items-center">
-      <span>
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink as-child>
-                <a href="#">File</a>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </span>
-      <span class="font-black">Search Algorithms</span>
-    </CardContent>
-  </Card>
+  <Menubar class="justify-between">
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+    </MenubarMenu>
+    <span class="text-sm font-black mx-2">Search Algorithms</span>
+  </Menubar>
 </template>
 
 <style scoped></style>

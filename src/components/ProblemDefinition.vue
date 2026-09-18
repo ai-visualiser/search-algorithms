@@ -4,7 +4,7 @@ import { PhCaretDown, PhCaretUp } from '@phosphor-icons/vue';
 import { Button } from '@/components/ui/button';
 import { ref } from 'vue';
 
-const collapsed = ref(false);
+const collapsed = ref(true);
 
 </script>
 
