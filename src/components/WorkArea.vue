@@ -29,7 +29,7 @@ function toggleDisplayMode() {
         </div>
       </CardTitle>
     </CardHeader>
-    <CardContent class="grow flex">
+    <CardContent class="grow flex overflow-y-auto py-0.5">
       <div class="flex flex-row grow gap-2 items-stretch">
         <SequenceList />
         <TreeArea class="grow" />

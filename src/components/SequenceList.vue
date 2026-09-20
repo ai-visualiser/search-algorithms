@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 </script>
 
 <template>
-  <div class="flex flex-col items-center p-2">
+  <div class="flex flex-col items-center p-2 overflow-y-auto">
     <Button variant="outline" class="rounded-full" size="icon">
       <span>2</span>
     </Button>

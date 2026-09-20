@@ -2,6 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
 import FrontierItem from '@/components/Frontier/FrontierItem.vue';
@@ -45,7 +46,7 @@ const [frontierList, frontierItems] = useDragAndDrop(frontiers, {
         </div>
       </CardDescription>
     </CardHeader>
-    <CardContent class="w-64">
+    <CardContent class="w-64 h-full grow overflow-y-auto py-0.5">
       <div class="flex flex-col gap-2" ref="frontierList">
         <FrontierItem v-for="item in frontierItems" :key="item.path" :item="item" />
       </div>
