@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ref } from 'vue';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ButtonGroup } from '@/components/ui/button-group';
+
 import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
+import FrontierItem from '@/components/Frontier/FrontierItem.vue';
 const frontiers = [
   {
     state: "a",
@@ -17,7 +20,7 @@ const frontiers = [
   },
   {
     state: "c",
-    path: "a-b-c",
+    path: "a-c-b-a-b-c-a-b-c-a-b-c",
     cost: 8,
     heuristic: 3,
   },
@@ -31,21 +34,20 @@ const [frontierList, frontierItems] = useDragAndDrop(frontiers, {
   <Card>
     <CardHeader>
       <CardTitle>Frontier List</CardTitle>
+      <CardDescription>
+        <div class="flex flex-row gap-1 items-center justify-between">
+          <span>Sort by</span>
+          <ButtonGroup>
+            <Button variant="outline">Order</Button>
+            <Button variant="outline">Cost</Button>
+            <Button variant="outline">Heuristic</Button>
+          </ButtonGroup>
+        </div>
+      </CardDescription>
     </CardHeader>
-    <CardContent class="min-w-[200px] max-w-0.5">
+    <CardContent class="w-64">
       <div class="flex flex-col gap-2" ref="frontierList">
-        <template v-for="item in frontierItems" :key="item">
-          <Card>
-            <CardHeader>
-              <CardTitle class="drag-handle">{{ item.state }}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div>{{ item.path }}</div>
-              <div>{{ item.cost }}</div>
-              <div>{{ item.heuristic }}</div>
-            </CardContent>
-          </Card>
-        </template>
+        <FrontierItem v-for="item in frontierItems" :key="item.path" :item="item" />
       </div>
     </CardContent>
   </Card>
