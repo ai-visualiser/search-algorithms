@@ -4,6 +4,7 @@ import { PhCaretDown, PhCaretUp } from '@phosphor-icons/vue';
 import { Button } from '@/components/ui/button';
 import { ref } from 'vue';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectItemText } from '@/components/ui/select';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 const collapsed = ref(false);
 
@@ -30,13 +31,27 @@ const selectedProblem = ref(problems[0]);
             <SelectItem v-for="problem in problems" :key="problem.id" :value="problem">
               <SelectItemText>{{ problem.name }}</SelectItemText>
             </SelectItem>
+            <SelectItem value="custom">
+              <SelectItemText>Custom</SelectItemText>
+            </SelectItem>
           </SelectContent>
         </Select>
         <Button class="ml-auto" variant="ghost" @click="collapsed = !collapsed"><PhCaretUp v-if="!collapsed" /><PhCaretDown v-else /></Button>
       </CardTitle>
     </CardHeader>
     <CardContent v-if="!collapsed">
-      <span class="font-black">{{ selectedProblem?.name }}</span>
+      <Tabs default-value="state">
+        <TabsList>
+          <TabsTrigger value="state">State</TabsTrigger>
+          <TabsTrigger value="action">Action</TabsTrigger>
+          <TabsTrigger value="cost">Cost</TabsTrigger>
+          <TabsTrigger value="heuristic">Heuristic</TabsTrigger>
+        </TabsList>
+        <TabsContent v-for="tab in ['state', 'action', 'cost', 'heuristic']" :key="tab" :value="tab">
+          <span class="font-black">{{ tab }}</span>
+          <span class="">{{ selectedProblem?.name }}</span>
+        </TabsContent>
+      </Tabs>
     </CardContent>
   </Card>
 </template>
